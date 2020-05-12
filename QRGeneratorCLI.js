@@ -1,7 +1,10 @@
-var QRCode = require('qrcode');
+const QRCode = require('qrcode');
 const CRC = require('crc-full').CRC;
-var crc = CRC.default("CRC16_CCITT_FALSE");
-var inquirer = require('inquirer');
+const crc = CRC.default("CRC16_CCITT_FALSE");
+const inquirer = require('inquirer');
+const fs = require('fs-extra');
+
+const outputDir = "./output/";
 
 //CLI Settings
 var questions = [{
@@ -74,11 +77,10 @@ inquirer.prompt(questions)
     var crcInterim = crc.compute(Buffer.from(interimString, "ascii"))
     var crcFinal = crcInterim.toString(16)
     crcFinal = "0000".substr(0, 4 - crcFinal.length) + crcFinal;
-    console.log(crcFinal);
     var completeString = interimString + crcFinal.toUpperCase();
-    console.log(completeString);
 
-    QRCode.toFile('./QR-Output/test.png', completeString, {
+    fs.mkdirsSync(outputDir);
+    QRCode.toFile(outputDir + Math.round(Date.now() / 1000) + '.png', completeString, {
       color: {
         dark: '#7C1A78',
         light: '#0000'
@@ -108,7 +110,7 @@ var payloadMobile = {
       return "03010";
     }
   },
-  expiryDateCode: "",
+  expiryDateCode: "040899991231",
   merchantCategoryCode: "52040000",
   transactionCurrency: "5303702",
   transactionAmount: price => {
