@@ -1,6 +1,6 @@
 {
-  "name": "qr-generator",
-  "version": "1.0.0",
+  "name": "node_paynowsg",
+  "version": "0.1.0",
   "description": "testing again",
   "main": "QRGenerator.js",
   "dependencies": {
@@ -13,6 +13,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Joel",
-  "license": "ISC"
+  "author": "Zhibin",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zzb106/PayNow-QR-Javascript.git"
+  },
+  "keywords": [
+    "paynow",
+    "qr",
+    "singapore"
+  ],
+  "bugs": {
+    "url": "https://github.com/zzb106/PayNow-QR-Javascript/issues"
+  },
+  "homepage": "https://github.com/zzb106/PayNow-QR-Javascript#readme"
 }
